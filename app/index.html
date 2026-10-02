@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CI/CD on AWS</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background:#0f172a; color:#e2e8f0; display:grid; place-items:center; min-height:100vh; margin:0; }
+    .card { background:#1e293b; padding:2rem 3rem; border-radius:12px; text-align:center; }
+    code { color:#38bdf8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Deployed via CodePipeline 🚀</h1>
+    <p>Source → CodeBuild → CodeDeploy → EC2 Auto Scaling behind an ALB</p>
+    <p>Version: <code id="v">loading…</code></p>
+  </div>
+  <script>
+    fetch('version.txt').then(r => r.text()).then(t => document.getElementById('v').textContent = t.trim())
+      .catch(() => document.getElementById('v').textContent = 'unknown');
+  </script>
+</body>
+</html>

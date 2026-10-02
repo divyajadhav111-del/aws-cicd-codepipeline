@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Running smoke tests"
+      - bash tests/smoke_test.sh
+  build:
+    commands:
+      - echo "Stamping build version"
+      - echo "build-${CODEBUILD_BUILD_NUMBER}-$(date -u +%Y%m%d%H%M)" > app/version.txt
+
+artifacts:
+  files:
+    - appspec.yml
+    - app/**/*
+    - scripts/**/*
